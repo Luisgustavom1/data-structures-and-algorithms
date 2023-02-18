@@ -1,7 +1,7 @@
-package implementation
+package bst
 
 import (
-	"trees/shared/node"
+	"data-structures/shared/node"
 )
 
 type BinarySearchTree struct {

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"data-structures/trees"
 	"fmt"
-	"trees/implementation"
 )
 
 func main() {
-	bst := implementation.NewBinarySearchTree()
+	bst := bst.NewBinarySearchTree()
 
 	bst.AddNode(8)
 	bst.AddNode(3)
