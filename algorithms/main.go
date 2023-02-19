@@ -1,7 +1,7 @@
 package main
 
 import (
-	"algorithms/binary-search"
+	"algorithms/search"
 	"algorithms/sort"
 	"fmt"
 )
@@ -12,7 +12,7 @@ func main() {
 		arr = append(arr, i*2+7)
 	}
 
-	itemIndex, err := bs.BinarySearch(arr, 47)
+	itemIndex, err := search.BinarySearch(arr, 47)
 	if err != nil {
 		fmt.Println(err)
 		return
