@@ -3,6 +3,7 @@ package bs
 import "errors"
 
 // only sorted list
+// log n -> n = arr length
 func BinarySearch(arr []int, item int) (int, error) {
 	low := 0
 	high := len(arr) - 1
