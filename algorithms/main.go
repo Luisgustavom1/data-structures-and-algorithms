@@ -18,8 +18,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("Binary search", itemIndex)
-	fmt.Println(arr[itemIndex])
+	fmt.Println("Binary search index =", itemIndex, "->", arr[itemIndex])
 
-	fmt.Println("Select sort ", sort.SelectSort(sort.GetUnsortedArray()))
+	fmt.Println("Select sort ", sort.QuickSort(sort.GetUnsortedArray()))
 }

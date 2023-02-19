@@ -1,6 +1,8 @@
 package search
 
-import "errors"
+import (
+	"errors"
+)
 
 // only sorted list
 // log n -> n = arr length
