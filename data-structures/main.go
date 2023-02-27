@@ -1,7 +1,8 @@
 package main
 
 import (
-	"data-structures/trees"
+	"data-structures/queue"
+	bst "data-structures/trees"
 	"fmt"
 )
 
@@ -35,4 +36,28 @@ func main() {
 	fmt.Printf("   %d", bst.Root.Left.Right.Right.Value)
 
 	fmt.Printf("  %d", bst.Root.Right.Right.Left.Value)
+
+	queue := queue.NewQueue()
+
+	queue.Enqueue(1)
+	queue.Enqueue(2)
+	queue.Enqueue(3)
+	queue.Enqueue(4)
+	queue.Enqueue(5)
+
+	fmt.Println()
+	fmt.Println(queue.Dequeue())
+	fmt.Println(queue.Dequeue())
+	fmt.Println(queue.Dequeue())
+	fmt.Println(queue.Dequeue())
+	fmt.Println(queue.Dequeue())
+
+	value, err := queue.Dequeue()
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println(value)
 }
