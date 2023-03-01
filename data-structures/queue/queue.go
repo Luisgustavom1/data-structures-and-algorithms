@@ -1,29 +1,33 @@
 package queue
 
-import "errors"
+import (
+	"errors"
+)
 
 type Queue struct {
-	Value []int
+	Value []string
 }
 
-func NewQueue() *Queue {
-	return &Queue{}
+func NewQueue(values ...string) *Queue {
+	return &Queue{
+		Value: values,
+	}
 }
 
-func (queue *Queue) Enqueue(value int) int {
-	queue.Value = append(queue.Value, value)
+func (queue *Queue) Enqueue(value ...string) bool {
+	queue.Value = append(queue.Value, value...)
 
-	return value
+	return true
 }
 
-func (queue *Queue) Dequeue() (value int, err error) {
+func (queue *Queue) Dequeue() (value string, err error) {
 	if len(queue.Value) == 0 {
-		return -1, errors.New("queue is empty")
+		return "", errors.New("queue is empty")
 	}
 
 	value = queue.Value[0]
 
-	queueCopy := make([]int, len(queue.Value)-1)
+	queueCopy := make([]string, len(queue.Value)-1)
 
 	copy(queueCopy, queue.Value[1:])
 	queue.Value = queueCopy
