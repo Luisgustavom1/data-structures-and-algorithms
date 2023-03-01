@@ -48,6 +48,6 @@ func main() {
 	gr.Elements["jhonny"] = []string{}
 
 	fmt.Println(gr.Elements)
-	fmt.Println(gr.BreadthFirstSearch("jhonny"))
-	fmt.Println(gr.BreadthFirstSearch("a"))
+	fmt.Println(gr.BreadthFirstSearch("jhonny", "voce"))
+	fmt.Println(gr.BreadthFirstSearch("a", "voce"))
 }

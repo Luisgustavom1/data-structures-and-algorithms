@@ -15,8 +15,8 @@ func NewGraph() *Graph {
 	}
 }
 
-func (graph *Graph) BreadthFirstSearch(value string) bool {
-	queueSearch := queue.NewQueue(graph.Elements["voce"]...)
+func (graph *Graph) BreadthFirstSearch(value string, initialSearch string) bool {
+	queueSearch := queue.NewQueue(graph.Elements[initialSearch]...)
 	visitedElements := []string{}
 
 	for len(queueSearch.Value) > 0 {
