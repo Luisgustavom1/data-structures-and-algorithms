@@ -1,7 +1,7 @@
 package main
 
 import (
-	"data-structures/queue"
+	"data-structures/graph"
 	bst "data-structures/trees"
 	"fmt"
 )
@@ -37,27 +37,17 @@ func main() {
 
 	fmt.Printf("  %d", bst.Root.Right.Right.Left.Value)
 
-	queue := queue.NewQueue()
+	gr := graph.NewGraph()
+	gr.Elements["voce"] = []string{"alice", "bob", "claire"}
+	gr.Elements["bob"] = []string{"anuj", "peggy"}
+	gr.Elements["alice"] = []string{"peggy"}
+	gr.Elements["claire"] = []string{"thom", "jhonny"}
+	gr.Elements["anuj"] = []string{}
+	gr.Elements["peggy"] = []string{}
+	gr.Elements["thom"] = []string{}
+	gr.Elements["jhonny"] = []string{}
 
-	queue.Enqueue(1)
-	queue.Enqueue(2)
-	queue.Enqueue(3)
-	queue.Enqueue(4)
-	queue.Enqueue(5)
-
-	fmt.Println()
-	fmt.Println(queue.Dequeue())
-	fmt.Println(queue.Dequeue())
-	fmt.Println(queue.Dequeue())
-	fmt.Println(queue.Dequeue())
-	fmt.Println(queue.Dequeue())
-
-	value, err := queue.Dequeue()
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	fmt.Println(value)
+	fmt.Println(gr.Elements)
+	fmt.Println(gr.BreadthFirstSearch("jhonny"))
+	fmt.Println(gr.BreadthFirstSearch("a"))
 }
