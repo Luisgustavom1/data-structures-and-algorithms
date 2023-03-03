@@ -9,7 +9,6 @@ import (
 )
 
 type (
-	GraphElements           map[string][]string
 	BreadthFirstSearchInput struct {
 		value         string
 		initialSearch string
@@ -20,7 +19,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 	testCases := []struct {
 		name     string
 		input    BreadthFirstSearchInput
-		populate func(*GraphElements)
+		populate func(*graph.Graph)
 		expected bool
 	}{
 		{
@@ -29,7 +28,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 				value:         "element-not-found",
 				initialSearch: "initial_search",
 			},
-			func(graphElements *GraphElements) {
+			func(graphElements *graph.Graph) {
 				populateGraph(graphElements)
 
 				keys := make([]string, 0, len((*graphElements)))
@@ -50,7 +49,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 				value:         "expected_value",
 				initialSearch: "initial_search",
 			},
-			func(graphElements *GraphElements) {
+			func(graphElements *graph.Graph) {
 				populateGraph(graphElements)
 
 				keys := make([]string, 0, len((*graphElements)))
@@ -70,7 +69,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 	for _, tt := range testCases {
 		t.Run(tt.name, func(t *testing.T) {
 			graph := graph.NewGraph()
-			tt.populate((*GraphElements)(&graph.Elements))
+			tt.populate(graph)
 			ifFoundElement := graph.BreadthFirstSearch(tt.input.value, tt.input.initialSearch)
 
 			if tt.expected != ifFoundElement {
@@ -80,6 +79,6 @@ func TestBreadthFirstSearch(t *testing.T) {
 	}
 }
 
-func populateGraph(graphElements *GraphElements) {
+func populateGraph(graphElements *graph.Graph) {
 	faker.FakeData(graphElements, options.WithRandomMapAndSliceMinSize(20), options.WithRandomMapAndSliceMaxSize(30))
 }

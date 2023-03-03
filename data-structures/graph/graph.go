@@ -5,18 +5,20 @@ import (
 	"data-structures-and-algorithms/data-structures/shared/array"
 )
 
-type Graph struct {
-	Elements map[string][]string
+type (
+	Graph map[string][]string
+)
+
+type GraphWeighted struct {
+	Vertices map[string]map[string]float64
 }
 
 func NewGraph() *Graph {
-	return &Graph{
-		Elements: make(map[string][]string),
-	}
+	return &Graph{}
 }
 
 func (graph *Graph) BreadthFirstSearch(value string, initialSearch string) bool {
-	queueSearch := queue.NewQueue(graph.Elements[initialSearch]...)
+	queueSearch := queue.NewQueue((*graph)[initialSearch]...)
 	visitedElements := []string{}
 
 	for len(queueSearch.Value) > 0 {
@@ -34,7 +36,7 @@ func (graph *Graph) BreadthFirstSearch(value string, initialSearch string) bool 
 		}
 
 		visitedElements = append(visitedElements, element)
-		queueSearch.Enqueue(graph.Elements[element]...)
+		queueSearch.Enqueue((*graph)[element]...)
 	}
 
 	return false
