@@ -1,9 +1,10 @@
 package main
 
 import (
-	"data-structures/graph"
-	bst "data-structures/trees"
 	"fmt"
+
+	"data-structures-and-algorithms/data-structures/graph"
+	"data-structures-and-algorithms/data-structures/trees"
 )
 
 func main() {

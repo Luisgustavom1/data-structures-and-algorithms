@@ -1,7 +1,7 @@
 package graph_test
 
 import (
-	"data-structures/graph"
+	"data-structures-and-algorithms/data-structures/graph"
 	"testing"
 
 	"github.com/go-faker/faker/v4"

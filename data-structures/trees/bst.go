@@ -1,7 +1,7 @@
 package bst
 
 import (
-	"data-structures/shared/node"
+	"data-structures-and-algorithms/data-structures/shared/node"
 )
 
 type BinarySearchTree struct {
@@ -21,7 +21,7 @@ func (bst *BinarySearchTree) AddNode(value int) {
 		bst.Root = newNode
 		return
 	}
-	
+
 	var currentNode *node.Node = bst.Root
 
 	for {

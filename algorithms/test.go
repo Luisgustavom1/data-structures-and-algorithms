@@ -1,8 +1,8 @@
 package main
 
 import (
-	"algorithms/search"
-	"algorithms/sort"
+	"data-structures-and-algorithms/algorithms/search"
+	"data-structures-and-algorithms/algorithms/sort"
 	"fmt"
 )
 

@@ -1,8 +1,8 @@
 package graph
 
 import (
-	"data-structures/queue"
-	"data-structures/shared/array"
+	"data-structures-and-algorithms/data-structures/queue"
+	"data-structures-and-algorithms/data-structures/shared/array"
 )
 
 type Graph struct {
