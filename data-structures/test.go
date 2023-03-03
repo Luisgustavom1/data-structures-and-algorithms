@@ -38,17 +38,17 @@ func main() {
 
 	fmt.Printf("  %d", bst.Root.Right.Right.Left.Value)
 
-	gr := graph.NewGraph()
-	gr.Elements["voce"] = []string{"alice", "bob", "claire"}
-	gr.Elements["bob"] = []string{"anuj", "peggy"}
-	gr.Elements["alice"] = []string{"peggy"}
-	gr.Elements["claire"] = []string{"thom", "jhonny"}
-	gr.Elements["anuj"] = []string{}
-	gr.Elements["peggy"] = []string{}
-	gr.Elements["thom"] = []string{}
-	gr.Elements["jhonny"] = []string{}
+	gr := *graph.NewGraph()
+	gr["voce"] = []string{"alice", "bob", "claire"}
+	gr["bob"] = []string{"anuj", "peggy"}
+	gr["alice"] = []string{"peggy"}
+	gr["claire"] = []string{"thom", "jhonny"}
+	gr["anuj"] = []string{}
+	gr["peggy"] = []string{}
+	gr["thom"] = []string{}
+	gr["jhonny"] = []string{}
 
-	fmt.Println(gr.Elements)
+	fmt.Println(gr)
 	fmt.Println(gr.BreadthFirstSearch("jhonny", "voce"))
 	fmt.Println(gr.BreadthFirstSearch("a", "voce"))
 }
