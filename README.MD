@@ -2,7 +2,7 @@
 
 # Data structures:
     
-#### [Trees](https://github.com/Luisgustavom1/data-structures/tree/main/data-structures/trees)
+#### [Trees](/data-structures/trees)
 
 # Algorithms
 
