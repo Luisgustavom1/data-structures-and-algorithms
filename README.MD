@@ -12,4 +12,4 @@
 - Search 
     - [Binary Search](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/search/binary-search.go)
 - Dijkstra
-    - [Dijkstra](/algorithms)
+    - [Take the shortest route](/algorithms/dijkstra)
