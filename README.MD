@@ -7,9 +7,9 @@
 # Algorithms
 
 - Sort
-    - [Quick Sort](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/sort/quick-sort.go)
-    - [Select Sort](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/sort/select-sort.go)
+    - [Quick Sort](/algorithms/sort/quick-sort.go)
+    - [Select Sort](/algorithms/sort/select-sort.go)
 - Search 
-    - [Binary Search](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/search/binary-search.go)
+    - [Binary Search](/algorithms/search/binary-search.go)
 - Dijkstra
     - [Take the shortest route](/algorithms/dijkstra)
