@@ -11,3 +11,5 @@
     - [Select Sort](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/sort/select-sort.go)
 - Search 
     - [Binary Search](https://github.com/Luisgustavom1/data-structures-and-algorithms/blob/main/algorithms/search/binary-search.go)
+- Dijkstra
+    - [Dijkstra](/algorithms)
