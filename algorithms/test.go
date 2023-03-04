@@ -3,6 +3,7 @@ package main
 import (
 	"data-structures-and-algorithms/algorithms/search"
 	"data-structures-and-algorithms/algorithms/sort"
+	"data-structures-and-algorithms/algorithms/dijkstra"
 	"fmt"
 )
 
@@ -21,4 +22,6 @@ func main() {
 	fmt.Println("Binary search index =", itemIndex, "->", arr[itemIndex])
 
 	fmt.Println("Select sort ", sort.QuickSort(sort.GetUnsortedArray()))
+
+	dijkstra.Example()
 }
