@@ -2,9 +2,9 @@
 
 # Data structures:
 
-#### [Queue](/data-structures/queue)
-#### [Trees](/data-structures/trees)
-#### [Graph](/data-structures/graph)
+- [Queue](/data-structures/queue)
+- [Trees](/data-structures/trees)
+- [Graph](/data-structures/graph)
 
 # Algorithms
 
