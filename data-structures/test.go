@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 
+	"data-structures-and-algorithms/algorithms/bfs"
 	"data-structures-and-algorithms/data-structures/graph"
-	"data-structures-and-algorithms/data-structures/trees"
+	bst "data-structures-and-algorithms/data-structures/trees"
 )
 
 func main() {
@@ -49,6 +50,6 @@ func main() {
 	gr["jhonny"] = []string{}
 
 	fmt.Println(gr)
-	fmt.Println(gr.BreadthFirstSearch("jhonny", "voce"))
-	fmt.Println(gr.BreadthFirstSearch("a", "voce"))
+	fmt.Println(bfs.BreadthFirstSearch(&gr, "jhonny", "voce"))
+	fmt.Println(bfs.BreadthFirstSearch(&gr, "a", "voce"))
 }

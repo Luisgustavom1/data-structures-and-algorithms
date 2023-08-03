@@ -1,41 +1,41 @@
-package linkedlist
+package ll
 
 import "fmt"
 
-type Node struct {
-	data string
-	next *Node
+type Node[D any] struct {
+	Data D `json:"data"`
+	Next *Node[D] `json:"nex"`
 }
 
-func NewLinkedList(initialValue string) *Node {
-	head := &Node{
-		data: initialValue,
-		next: nil,
+func NewLinkedList[D any](initialValue D) *Node[D] {
+	head := &Node[D]{
+		Data: initialValue,
+		Next: nil,
 	}
 
 	return head
 }
 
-func (node *Node) AddNode(value string) {
-	isTail := node.next == nil
+func (node *Node[D]) AddNode(value D) {
+	isTail := node.Next == nil
 	if isTail {
-		node.next = &Node{
-			data: value,
-			next: nil,
+		node.Next = &Node[D]{
+			Data: value,
+			Next: nil,
 		}
 	} else {
-		newNode := &Node{
-			data: value,
-			next: node.next,
+		newNode := &Node[D]{
+			Data: value,
+			Next: node.Next,
 		}
 
-		node.next = newNode
+		node.Next = newNode
 	}
 }
 
-func (node *Node) Print() {
+func (node *Node[D]) Print() {
 	for node != nil {
-		fmt.Println(node.data)
-		node = node.next
+		fmt.Println(node.Data)
+		node = node.Next
 	}
 }
