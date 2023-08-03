@@ -1,8 +1,10 @@
 ## This repository is for making my notes on **data structure** and **algorithms** studies
 
 # Data structures:
-    
+
+#### [Queue](/data-structures/queue)
 #### [Trees](/data-structures/trees)
+#### [Graph](/data-structures/graph)
 
 # Algorithms
 
