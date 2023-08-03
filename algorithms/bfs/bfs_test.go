@@ -1,7 +1,8 @@
-package graph_test
+package bfs_test
 
 import (
 	"data-structures-and-algorithms/data-structures/graph"
+	"data-structures-and-algorithms/algorithms/bfs"
 	"testing"
 
 	"github.com/go-faker/faker/v4"
@@ -10,6 +11,7 @@ import (
 
 type (
 	BreadthFirstSearchInput struct {
+		graph 				graph.Graph
 		value         string
 		initialSearch string
 	}
@@ -70,7 +72,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			graph := graph.NewGraph()
 			tt.populate(graph)
-			ifFoundElement := graph.BreadthFirstSearch(tt.input.value, tt.input.initialSearch)
+			ifFoundElement := bfs.BreadthFirstSearch(graph, tt.input.value, tt.input.initialSearch)
 
 			if tt.expected != ifFoundElement {
 				t.Errorf("Expected return: %t, but got: %t", tt.expected, ifFoundElement)
