@@ -8,12 +8,6 @@ type GraphAdj struct { // list of adjacencies
 
 type GraphLink = []*ll.Node[int]
 
-type VertexAttr struct {
-	D int `json:"d"`
-	Color Colors `json:"color"`
-	Prev int `json:"prev"`
-}
-
 type Colors uint
 
 const (

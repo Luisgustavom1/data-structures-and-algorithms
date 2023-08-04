@@ -7,14 +7,20 @@ import (
 	"fmt"
 )
 
+type VertexAttr struct {
+	D int `json:"d"`
+	Color graph.Colors `json:"color"`
+	Prev int `json:"prev"`
+}
+
 // lf -> List of adjacencies
 // References: Algoritmos: Teoria e Prática -> Thomas H. Cormen
 // Page 433
-func BreadthFirstSearchAdj(g graph.GraphAdj, sourceIndex int) []graph.VertexAttr {
-	verticesAttr := []graph.VertexAttr{}
+func BreadthFirstSearchAdj(g graph.GraphAdj, sourceIndex int) []VertexAttr {
+	verticesAttr := []VertexAttr{}
 
 	for range(g.Link) {
-		verticesAttr = append(verticesAttr, graph.VertexAttr{
+		verticesAttr = append(verticesAttr, VertexAttr{
 			Color: graph.White,
 			D: -1,
 			Prev: -1,
