@@ -15,3 +15,5 @@
     - [Binary Search](/algorithms/search/binary-search.go)
 - Dijkstra
     - [Take the shortest route](/algorithms/dijkstra)
+- Breadth First Search
+    - [Take the shortest route](/algorithms/bfs)
