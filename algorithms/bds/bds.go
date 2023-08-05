@@ -1,8 +1,7 @@
-package main
+package bds
 
 import (
 	"data-structures-and-algorithms/data-structures/graph"
-	ll "data-structures-and-algorithms/data-structures/linked-list"
 	"fmt"
 )
 
@@ -63,29 +62,9 @@ func DFSVisit(g graph.GraphAdj, va []*VertexAttr, u *VertexAttr) {
 	u.F = time
 }
 
-func main() {
-	gr := graph.NewGraphAdj()
-	adj := gr.Link
-	// Graph illustration https://excalidraw.com/#room=29e06eabd41d513cfef1,vgRPeL08l6gjkS-6JjVhZg
-	adj = append(adj, ll.NewLinkedList[int](1))
-	adj[0].AddNode(3)
-
-	adj = append(adj, ll.NewLinkedList[int](4))
-
-	adj = append(adj, ll.NewLinkedList[int](4))
-	adj[2].AddNode(5)
-
-	adj = append(adj, ll.NewLinkedList[int](1))
-
-	adj = append(adj, ll.NewLinkedList[int](3))
-
-	adj = append(adj, ll.NewLinkedList[int](5))
-
-	gr.Link = adj
-
-	attrs := DepthFirstSearch(*gr)
-
-	for i, v := range(attrs) {
-		fmt.Printf("%d -> %d %d %d %d\n", i, v.Color, v.Prev, v.D, v.F)
-	}
+func (va VertexAttr) Pretty() string {
+	return fmt.Sprintf(
+		"%d -> %d %d %d %d", 
+			va.AdjIndex, va.Color, va.Prev, va.D, va.F,
+	)
 }
