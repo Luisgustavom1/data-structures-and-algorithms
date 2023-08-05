@@ -9,7 +9,7 @@ func TestBreadthFirstSearch(t *testing.T) {
 	testCases := []struct {
 		name     string
 		input    graph.GraphAdj
-		expected []*VertexAttr
+		expected []VertexAttr
 	}{
 		{
 			"should return correct vertex attr of this graph https://excalidraw.com/#room=29e06eabd41d513cfef1,vgRPeL08l6gjkS-6JjVhZg",
@@ -23,15 +23,15 @@ func TestBreadthFirstSearch(t *testing.T) {
 			result := DepthFirstSearch(tc.input)
 
 			if !vertexAttrIsEqual(tc.expected, result) {
-				for _, r := range(result) {
-					t.Errorf("Expected return: %s, but got: %s", r.Pretty(), r.Pretty())
+				for i, r := range(result) {
+					t.Errorf("Expected return: %s, but got: %s", tc.expected[i].Pretty(), r.Pretty())
 				}
 			}
 		})
 	}
 }
 
-func vertexAttrIsEqual(vertices []*VertexAttr, toCompare []*VertexAttr) bool {
+func vertexAttrIsEqual(vertices []VertexAttr, toCompare []VertexAttr) bool {
 	for i, v := range(vertices) {
 		vToCompare := toCompare[i]
 

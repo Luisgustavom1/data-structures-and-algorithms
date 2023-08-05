@@ -43,8 +43,8 @@ func GenerateGraph() graph.GraphAdj {
 	}
 }
 
-func GenerateGraphAttr() []*VertexAttr {
-	return []*VertexAttr{
+func GenerateGraphAttr() []VertexAttr {
+	return []VertexAttr{
 		{
 			AdjIndex: 0,
 			D: 1,

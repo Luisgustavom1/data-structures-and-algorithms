@@ -36,19 +36,19 @@ func BreadthFirstSearchAdj(g graph.GraphAdj, sourceIndex int) []VertexAttr {
 	for len(toVisit.Value) > 0 {
 		u, _ := toVisit.Dequeue()
 		
-		uList := g.Link[u]
-		for uList != nil {
-			v := &verticesAttr[uList.Data]
+		uAdj := g.Link[u]
+		for uAdj != nil {
+			v := &verticesAttr[uAdj.Data]
 
 			if v.Color == graph.White {
 				v.Color = graph.Gray
 				v.D = verticesAttr[u].D + 1
 				v.Prev = u
 
-				toVisit.Enqueue(uList.Data)
+				toVisit.Enqueue(uAdj.Data)
 			}
 
-			uList = uList.Next
+			uAdj = uAdj.Next
 		}
 		
 		verticesAttr[u].Color = graph.Black

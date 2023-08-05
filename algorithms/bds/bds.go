@@ -17,11 +17,11 @@ type VertexAttr struct {
 // Page 440
 var time = 0
 
-func DepthFirstSearch(g graph.GraphAdj) []*VertexAttr {
-	verticesAttr := []*VertexAttr{}
+func DepthFirstSearch(g graph.GraphAdj) []VertexAttr {
+	verticesAttr := []VertexAttr{}
 
 	for i := range g.Link {
-		verticesAttr = append(verticesAttr, &VertexAttr{
+		verticesAttr = append(verticesAttr, VertexAttr{
 			Color: graph.White,
 			Prev: -1,
 			D: -1,
@@ -32,27 +32,29 @@ func DepthFirstSearch(g graph.GraphAdj) []*VertexAttr {
 
 	time = 0
 
-	for _, v := range(verticesAttr) {
+	for i := range(verticesAttr) {
+		v := &verticesAttr[i]
+
 		if v.Color == graph.White {
-			DFSVisit(g, verticesAttr, v)
+			DFSVisit(g, &verticesAttr, v)
 		}
 	}
 
 	return verticesAttr
 }
 
-func DFSVisit(g graph.GraphAdj, va []*VertexAttr, u *VertexAttr) {
+func DFSVisit(g graph.GraphAdj, va *[]VertexAttr, u *VertexAttr) {
 	time = time + 1
 	u.D = time
 	u.Color = graph.Gray
 
 	vIndex := g.Link[u.AdjIndex]
-	var v *VertexAttr 
+	var vertex *VertexAttr 
 	for vIndex != nil {
-		v = va[vIndex.Data]
-		if v.Color == graph.White {
-			v.Prev = u.AdjIndex
-			DFSVisit(g, va, v)
+		vertex = &(*va)[vIndex.Data]
+		if vertex.Color == graph.White {
+			(*vertex).Prev = u.AdjIndex
+			DFSVisit(g, va, vertex)
 		}
 		vIndex = vIndex.Next
 	}
