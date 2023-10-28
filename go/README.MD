@@ -1,5 +1,3 @@
-## This repository is for making my notes on **data structure** and **algorithms** studies
-
 # Data structures:
 
 - [Queue](/data-structures/queue)
