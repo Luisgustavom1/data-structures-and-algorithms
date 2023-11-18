@@ -2,8 +2,9 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "outDir": "./out",
-    "strict": true
+    "strict": true,
+    "types": ["vitest/globals"],
   },
   "include": ["**.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules"]
 }
