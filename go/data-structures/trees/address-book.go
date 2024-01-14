@@ -1,6 +1,8 @@
 // https://medium.com/@kiruu1238/building-a-dynamic-address-book-with-binary-search-trees-in-go-a-golang-journey-into-efficient-6b35a209eb07
 package tree
 
+import "fmt"
+
 type AddressBookNode struct {
 	Name string
 	ContactInfo string
@@ -33,7 +35,7 @@ func (n *AddressBookNode) SearchContact(name string) (string, bool) {
 	if name == n.Name {
 		return n.ContactInfo, true
 	}
-
+	n.ToString()
 	if name < n.Name {
 		return n.Left.SearchContact(name)
 	}
@@ -89,4 +91,8 @@ func (n *AddressBookNode) Height() int {
 	}
 
 	return rightHeight + 1;
+}
+
+func (n *AddressBookNode) ToString() {
+	fmt.Printf("Name: %s, ContactInfo: %s\n", n.Name, n.ContactInfo)
 }
