@@ -40,3 +40,53 @@ func (n *AddressBookNode) SearchContact(name string) (string, bool) {
 
 	return n.Right.SearchContact(name)
 }
+
+func (n *AddressBookNode) DeleteContact(name string) *AddressBookNode {
+	if n == nil {
+		return nil
+	}
+
+	if name < n.Name {
+		n.Left = n.Left.DeleteContact(name)
+	} else if name > n.Name {
+		n.Right = n.Right.DeleteContact(name)
+	} else {
+		if n.Left == nil {
+			return n.Right
+		} else if n.Right == nil { 
+			return n.Left
+		}
+
+		smallest := n.Right.FindMin()
+		n.Name = smallest.Name
+		n.ContactInfo = smallest.ContactInfo
+		n.Right = n.Right.DeleteContact(smallest.Name)
+	}
+
+	return n
+}
+
+func (n *AddressBookNode) FindMin() *AddressBookNode  {
+	current := n
+
+	for current.Left != nil {
+		current = current.Left
+	}
+
+	return current
+}
+
+func (n *AddressBookNode) Height() int {
+	if n == nil {
+		return 0
+	}
+
+	leftHeight := n.Left.Height()
+	rightHeight := n.Right.Height()
+
+	if leftHeight > rightHeight {
+		return leftHeight + 1;
+	}
+
+	return rightHeight + 1;
+}
