@@ -5,15 +5,15 @@ int binarySearch(int n, int* vector, int size) {
 	int end = size - 1;
 	
 	while (start <= end) {
-			int middle = (start + end) / 2;
-			
-			if (n < vector[middle]) {
-					end = middle - 1;
-			} else if (n > vector[middle]) {
-					start = middle + 1;
-			} else {
-					return middle;
-			}
+		int middle = (start + end) / 2;
+		
+		if (n < vector[middle]) {
+			end = middle - 1;
+		} else if (n > vector[middle]) {
+			start = middle + 1;
+		} else {
+			return middle;
+		}
 	}
 	
 	return -1;
