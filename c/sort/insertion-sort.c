@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+// c*1 + c*2 + c*3 + ... + c*(n-1) = c*(1 + 2 + 3 + ... + (n - 1))
+// c*(n - 1)*((n - 1 + 1)/2)
+// c*((nˆ2 - n)/2) = cnˆ2/2 - cn/2
+// cnˆ2/2 -> O(nˆ2)
+// O(nˆ2) -> disordered vector
+
+// c*(n - 1) = cn - c -> O(n)
+// O(n) -> Best case when vector already ordered
+
 void insertionSort(int* v, int n) {
 	int i, j, tmp;
 
