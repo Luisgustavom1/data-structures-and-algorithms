@@ -2,11 +2,11 @@
 	
 void bubbleSort(int* v, int n) {
 	int temp, s, i;	
-	int e = n;
+	int e = n - 1;
 
 	do {
 		s = 0;
-		for (i = 0; i < e - 1; i++) {
+		for (i = 0; i < e; i++) {
 			if (v[i] > v[i + 1]) {
 				temp = v[i];
 				v[i] = v[i + 1];
