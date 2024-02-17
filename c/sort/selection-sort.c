@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+// 1 + 2 + 3 + 4 + ... + (n - 1) + n 
+// (n + 1)(n/2)
+// nˆ2/2 + n/2 -> O(n^2)
+
 void selectionSort(int* v, int n) {
 	int tmp, s, i;
 	int e = n - 1;
