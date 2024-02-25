@@ -1,7 +1,10 @@
-Excalindraw to simulations: https://excalidraw.com/#json=WiR27QqMe3PV2fwNxdYhE,mel_7sNrXOlCmHofn3wwOg
+Excalindraw to simulations: https://excalidraw.com/#json=IqUyLHyJJ_IS3Xw_j9O1V,T36n_tneLfggzhJMDqtY3Q
 
-### [Bubble Sort](/sort/bubble-sort.c)
+### [Bubble Sort](sort/bubble-sort.c)
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/5f686830-0faa-4870-b179-de512e250456)
+
+### [Selection Sort](sort/selection-sort.c)
+![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/45c91b7e-63b0-4f0b-a879-02cb44f852cc)
 
 ### [Insertion Sort](sort/insertion-sort.c)
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/704b66fc-4e9e-4801-b0b0-68d7eb9ade91)
