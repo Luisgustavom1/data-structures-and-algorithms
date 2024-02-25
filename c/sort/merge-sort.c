@@ -32,19 +32,6 @@ void merge(int* v, int s, int m, int e) {
 			p1++;
 		}
 	}
-
-	printf("\n\n s: %d; m: %d, e: %d\n", s, m, e);
-	
-
-	for (i = 0; i < 7; i++) {
-		printf("%d - %d\n", i + 1, v[i]);
-	}
-
-	for (i = 0; i < size; i++) {
-		printf("\n%d - %d", i + 1, aux[i]);
-	}
-	printf("\n\n");
-
 	j = s;	
 	for (i = 0; i < size; i++) {
 		v[j] = aux[i]; 
