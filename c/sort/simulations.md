@@ -1,5 +1,10 @@
 Excalindraw to simulations: https://excalidraw.com/#json=IqUyLHyJJ_IS3Xw_j9O1V,T36n_tneLfggzhJMDqtY3Q
 
+Sort Simulations:
+- [Bubble Sort](./simulations.md#bubble-sort)
+- [Selection Sort](./simulations.md#selection-sort)
+- [Insertion Sort](./simulations.md#insertion-sort)
+
 ### [Bubble Sort](sort/bubble-sort.c)
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/fa47cc67-d399-4786-8d8e-e442e8bb3922)
 
