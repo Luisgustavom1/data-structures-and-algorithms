@@ -7,7 +7,7 @@ int partition(int* v, int s, int e) {
 	
 	while(left < right) {
 		while (pivo >= v[left] && left <= e) left++;
-	   	while (pivo < v[right] && right >= s) right--;	
+	  while (pivo < v[right] && right >= s) right--;	
 
 		if (left < right) {
 			int aux = v[left];
