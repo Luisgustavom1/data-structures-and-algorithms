@@ -16,3 +16,6 @@ Sort Simulations:
 
 ### [Merge Sort](sort/merge-sort.c)
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/a737851d-db08-44c9-8aab-242a062034a9)
+
+### [Quick Sort](sort/quick-sort.c)
+![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/4330fa63-3b04-4543-91da-b5d879e08fcb)
