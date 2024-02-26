@@ -14,3 +14,5 @@ Sort Simulations:
 ### [Insertion Sort](sort/insertion-sort.c)
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/704b66fc-4e9e-4801-b0b0-68d7eb9ade91)
 
+### [Merge Sort](sort/merge-sort.c)
+![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/a737851d-db08-44c9-8aab-242a062034a9)
