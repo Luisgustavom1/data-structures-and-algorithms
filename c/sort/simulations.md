@@ -18,4 +18,4 @@ Sort Simulations:
 ![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/a737851d-db08-44c9-8aab-242a062034a9)
 
 ### [Quick Sort](./quick-sort.c)
-![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/4330fa63-3b04-4543-91da-b5d879e08fcb)
+![image](https://github.com/Luisgustavom1/data-structures-and-algorithms/assets/65229051/4c2a053e-04db-4973-aa36-248d03f7a450)
