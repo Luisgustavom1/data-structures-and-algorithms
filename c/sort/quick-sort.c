@@ -17,7 +17,7 @@ int partition(int* v, int s, int e) {
 	
 	while(left < right) {
 		while (pivo >= v[left] && left <= e) left++;
-	  while (pivo < v[right] && right >= s) right--;	
+	 	while (pivo < v[right] && right >= s) right--;	
 
 		if (left < right) {
 			int aux = v[left];
@@ -41,7 +41,7 @@ void quickSort(int* v, int s, int e) {
 }
 
 int main() {
-	int v[] = {23, 4, 67, -8, 90, 54, 21};
+	int v[] = {100, 88, 76, 67, 43, 25, 18, 8, 5, 2};
 	int s = sizeof(v) / sizeof(int);
 	for (int i = 0; i < s; i++) {
 		printf("%d - %d\n", i + 1, v[i]);

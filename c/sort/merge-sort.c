@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Takes c*n to each level of subproblem
+// If we have a subproblem tree with height h, we have c*n*h
+// h in function of n (length of vector to order), we have log n + 1
+// c*n*(log n + 1) -> O(n log n) to all cases
+
 void merge(int* v, int s, int m, int e) {
 	int *aux;
 	int f1 = 0, f2 = 0, i, j;
