@@ -1,6 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// - Worst case occurs when vector has the most unbalanced partitions possible
+// cn + c(n-1) + c(n-2) + ... + 2c
+// c(n + (n-1) + (n-2) + ... + 2)
+// c((n+1)(n/2) - 1) -> O(n^2)
+
+// - Best case occurs when partitions are as evelyn balanced as possible: their sizes either are equal or are within 1 of each other
+// - Each partition after partitioning has n/2 - 1 (even) or (n-1)/2 (odd) -> Therefore, each partition has at most n/2 elements
+// 2*c(n/2) = cn ... 4*c(n/4) = cn
+// O(n log n) -> Best and Average case
+
 int partition(int* v, int s, int e) {
 	int left = s, right = e;
 	int pivo = v[s];
