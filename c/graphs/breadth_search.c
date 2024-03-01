@@ -26,7 +26,7 @@ int *breadthSearch(Graph *g) {
 	int w;
 	int v = 0;
 	int count = 1;
-	Node *q = Queue(); 
+	Queue *q = InitQueue(); 
 	enqueue(q, v);
 
 	for (int i = 0; i < g->V; i++) {
@@ -34,8 +34,7 @@ int *breadthSearch(Graph *g) {
 	}
 	visited[v] = count;
 
-	// TODO: implement a method to verify if queue is empty
-	while (q->next != q) {
+	while (isEmpty(q) == 0){
 		v = dequeue(q);
 		Node *aux = g->adj[v];
 

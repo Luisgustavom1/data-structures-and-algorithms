@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "linked-list.h"
 
-// TODO: head of linked list already with a value
 Node* LinkedList(int v) {
 	Node *head = malloc(sizeof(Node));
 	head->value = v;

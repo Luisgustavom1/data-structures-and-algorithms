@@ -31,7 +31,7 @@ int dequeue(Queue *q) {
 	if (q->head == NULL) return -1;
 	Node *tmp = q->head;
 	int v = tmp->value;
-	
+
 	q->head = q->head->next;
 
 	if (q->head == NULL) {
@@ -42,19 +42,19 @@ int dequeue(Queue *q) {
 	return v;
 }
 
-int main() {
-	Queue *queue = InitQueue();
-	enqueue(queue, 7); // [| ] -> [7 | ]
-	enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
-	enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
-	enqueue(queue, 19); 
-	enqueue(queue, 1);
+// int main() {
+// 	Queue *queue = InitQueue();
+// 	enqueue(queue, 7); // [| ] -> [7 | ]
+// 	enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
+// 	enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
+// 	enqueue(queue, 19); 
+// 	enqueue(queue, 1);
 
-	printf("====\n");
-	printf("f %d\n", dequeue(queue));
-	printf("f %d\n", dequeue(queue));
-	printf("f %d\n", dequeue(queue));
-	printf("f %d\n", dequeue(queue));
-	printf("f %d\n", dequeue(queue));
-	return 0;
-}
+// 	printf("====\n");
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	return 0;
+// }
