@@ -15,38 +15,32 @@ type GarbageInfos struct {
 func garbageCollection(garbage []string, travel []int) int {
 	totalMinutesAmt := 0
 	travelSum := make([]int, len(garbage))
-    garbageInfos := map[string]int{
-			"P": 0,
-			"G": 0,
-			"M": 0,
+	var p, m, g int
+	
+	for i, v := range garbage {
+		totalMinutesAmt += len(v)
+		if strings.Contains(v, "P") {
+			p = i
 		}
-    
-    for i, v := range garbage {
-            totalMinutesAmt += len(v)
-			if strings.Contains(v, "P") {
-				garbageInfos["P"] = i
-			}
-			if strings.Contains(v, "M") {
-				garbageInfos["M"] = i
-			}
-			if strings.Contains(v, "G") {
-				garbageInfos["G"] = i
-			}
-    }
+		if strings.Contains(v, "M") {
+			m = i
+		}
+		if strings.Contains(v, "G") {
+			g = i
+		}
+	}
 
-		for i := range garbage {
-			if i == 0 {
-				travelSum[i] = 0
-			} else if i == 1 {
-				travelSum[i] = travel[0]
-			} else {
-                travelSum[i] = travel[i-1] + travelSum[i-1]
-            }
+	for i := range garbage {
+		if i > 1 {
+			travelSum[i] = travel[i-1] + travelSum[i-1]
+		} else if i == 0 {
+			travelSum[i] = 0
+		} else if i == 1 {
+			travelSum[i] = travel[0]
 		}
+	}
 
-		for _, v := range garbageInfos {
-			totalMinutesAmt += travelSum[v]
-		}
-    
-		return totalMinutesAmt
+	totalMinutesAmt += travelSum[p] + travelSum[m] + travelSum[g]
+
+	return totalMinutesAmt
 }
