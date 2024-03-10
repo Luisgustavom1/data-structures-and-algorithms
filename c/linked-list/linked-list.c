@@ -3,23 +3,17 @@
 #include "linked-list.h"
 
 void print(Node *head) {
-	if (head != NULL) {
-		printf("%d\n", head->value);
-		print(head->next);
-	}
-}
-
-void insert(Node *head, int n) {
-	Node *new_node;
-	new_node = malloc(sizeof(Node));	
-	new_node->value = n;
-	new_node->next = head->next;
-	head->next = new_node;
+	Node *tmp = head->next;
+	do {
+		printf("%d\n", tmp->value);
+		tmp = tmp->next;
+	} while (tmp != head->next);
 }
 
 Node* init(int n) {
 	Node *head = malloc(sizeof(Node));
 	head->value = n;
+	head->next = head;
 	return head;
 }
 
@@ -41,16 +35,38 @@ void removeByValue(Node *head, int n) {
 	free(tmp);
 }
 
-// int main() {
-//	Node *linked_list = init(7);
-//	insert(linked_list, 3);
-//	insert(linked_list, 8);
-//	insert(linked_list, 19);
-//	insert(linked_list, 1);
-//	print(linked_list);
-//	printf("removing...\n");
-//	removeByValue(linked_list, 8);
-//	print(linked_list);
+Node *enqueue(Node *head, int n) {
+	Node *new_node;
+	new_node = malloc(sizeof(Node));	
+	new_node->value = n;
+	new_node->next = head->next;
+	head->next = new_node;
+	return new_node;
+}
 
-//	return 0;
-//}
+int dequeue(Node *head) {
+	if (head == NULL) return -1;
+	Node *tmp = head->next;
+	int v = tmp->value;
+	head->next = tmp->next;
+	free(tmp);
+	return v;
+}
+
+// int main() {
+// 	Node *queue = init(7); // [7 | ] -> [7 | ]
+// 	queue = enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
+// 	queue = enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
+// 	queue =	enqueue(queue, 19); 
+// 	queue = enqueue(queue, 1);
+	
+// 	print(queue);
+// 	printf("====\n");
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+// 	printf("f %d\n", dequeue(queue));
+	
+// 	return 0;
+// }
