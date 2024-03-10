@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct node Node;
-
-struct node {
-	int value;
-	Node *next;
-};
+#include "linked-list.h"
 
 void print(Node *head) {
 	if (head != NULL) {
@@ -47,16 +41,16 @@ void removeByValue(Node *head, int n) {
 	free(tmp);
 }
 
-int main() {
-	Node *linked_list = init(7);
-	insert(linked_list, 3);
-	insert(linked_list, 8);
-	insert(linked_list, 19);
-	insert(linked_list, 1);
-	print(linked_list);
-	printf("removing...\n");
-	removeByValue(linked_list, 8);
-	print(linked_list);
+// int main() {
+//	Node *linked_list = init(7);
+//	insert(linked_list, 3);
+//	insert(linked_list, 8);
+//	insert(linked_list, 19);
+//	insert(linked_list, 1);
+//	print(linked_list);
+//	printf("removing...\n");
+//	removeByValue(linked_list, 8);
+//	print(linked_list);
 
-	return 0;
-}
+//	return 0;
+//}

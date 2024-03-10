@@ -1,10 +1,17 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-external void print(Node *node);
-external void insert(Node *node, int n);
-external Node* init(int n);
-external Node* search(Node *node, int n);
-external void removeByValue(Node *node, int n);
+typedef struct node Node;
+
+struct node {
+	int value;
+	Node *next;
+};
+
+extern void print(Node *node);
+extern void insert(Node *node, int n);
+extern Node* init(int n);
+extern Node* search(Node *node, int n);
+extern void removeByValue(Node *node, int n);
 
 #endif
