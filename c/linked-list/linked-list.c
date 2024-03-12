@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "linked-list.h"
 
-void print(Node *head) {
+void printQueue(Node *head) {
 	Node *tmp = head->next;
 	do {
 		printf("%d\n", tmp->value);
@@ -10,15 +10,29 @@ void print(Node *head) {
 	} while (tmp != head->next);
 }
 
-Node* init(int n) {
+void print(Node *head) {
+	Node *tmp = head->next;
+	while(tmp != NULL) {
+		printf("%d\n", tmp->value);
+		tmp = tmp->next;
+	};
+}
+
+Node* Queue(int n) {
 	Node *head = malloc(sizeof(Node));
 	head->value = n;
 	head->next = head;
 	return head;
 }
 
+Node* LinkedList() {
+	Node *head = malloc(sizeof(Node));
+	head->next = NULL;
+	return head;
+}
+
 Node* search(Node *head, int n) {
-	Node *temp = head;
+	Node *temp = head->next;
 	while(temp != NULL && temp->value != n) {
 		temp = temp->next;	
 	}
@@ -26,8 +40,8 @@ Node* search(Node *head, int n) {
 }
 
 void removeByValue(Node *head, int n) {
-	Node *prev = head;
-	while(prev->next != NULL && prev->next->value != n) {
+	Node *prev = head->next;
+	while(prev != NULL && prev->next->value != n) {
 		prev = prev->next;
 	}
 	Node *tmp = prev->next;
@@ -35,7 +49,19 @@ void removeByValue(Node *head, int n) {
 	free(tmp);
 }
 
-Node *enqueue(Node *head, int n) {
+Node* append(Node *head, int n) {
+	Node *new_node;
+	new_node = malloc(sizeof(Node));
+	new_node->value = n;
+	Node *last = head;
+	while (last->next != NULL) {
+		last = last->next;
+	}
+	last->next = new_node;
+	return new_node;
+}
+
+Node* enqueue(Node *head, int n) {
 	Node *new_node;
 	new_node = malloc(sizeof(Node));	
 	new_node->value = n;
@@ -53,20 +79,33 @@ int dequeue(Node *head) {
 	return v;
 }
 
-// int main() {
-// 	Node *queue = init(7); // [7 | ] -> [7 | ]
-// 	queue = enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
-// 	queue = enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
-// 	queue =	enqueue(queue, 19); 
-// 	queue = enqueue(queue, 1);
+int main() {
+	Node *linkedList = LinkedList(); // [7 | ] -> [7 | ]
+	append(linkedList, 7);
+	append(linkedList, 19);
+	append(linkedList, 18);
+	append(linkedList, 17);
+	append(linkedList, 16);
+	append(linkedList, 15);
+	// queue = enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
+	// queue = enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
+	// queue =	enqueue(queue, 19); 
+	// queue = enqueue(queue, 1);
 	
-// 	print(queue);
-// 	printf("====\n");
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
+	print(linkedList);
+	removeByValue(linkedList, 17);
+	Node *t = search(linkedList, 17);
+	if (t == NULL) {
+		printf("not found\n");
+	} else {
+		printf("found %d\n", t->value);
+	}
+	// printf("====\n");
+	// printf("f %d\n", dequeue(queue));
+	// printf("f %d\n", dequeue(queue));
+	// printf("f %d\n", dequeue(queue));
+	// printf("f %d\n", dequeue(queue));
+	// printf("f %d\n", dequeue(queue));
 	
-// 	return 0;
-// }
+	return 0;
+}
