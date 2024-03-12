@@ -8,11 +8,10 @@ struct node {
 	Node *next;
 };
 
-extern void print(Node *head);
-extern Node* init(int n);
+extern Node* LinkedList();
 extern Node* search(Node *head, int n);
+extern Node* append(Node *head, int n);
 extern void removeByValue(Node *head, int n);
-extern Node* enqueue(Node *head, int n);
-extern int dequeue(Node *head);
+extern void print(Node *head);
 
 #endif
