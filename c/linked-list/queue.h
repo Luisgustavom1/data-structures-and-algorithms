@@ -1,16 +1,15 @@
-#ifndef LINKED_LIST_H
-#define LINKED_LIST_H
+#ifndef QUEUE_H
+#define QUEUE_H
+#include "linked-list.h"
 
-typedef struct node Node;
-
-struct node {
-	int value;
-	Node *next;
+typedef struct queue Queue;
+struct queue {
+	Node *head, *tail;
 };
 
-extern Node* Queue(int n);
-extern Node* enqueue(Node *head, int n);
-extern int dequeue(Node *head);
-extern void printQueue(Node *head);
+extern Queue* InitQueue();
+extern int isEmpty(Queue *q);
+extern void enqueue(Queue *q, int n);
+extern int dequeue(Queue *q);
 
 #endif

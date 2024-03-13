@@ -2,53 +2,59 @@
 #include <stdlib.h>
 #include "queue.h"
 
-Node* Queue(int n) {
-	Node *head = malloc(sizeof(Node));
-	head->value = n;
-	head->next = head;
-	return head;
+Queue* InitQueue() {
+	Queue *q = malloc(sizeof(Queue));
+	q->head = q->tail = NULL;
+	return q;
 }
 
-void print(Node *head) {
-	Node *tmp = head->next;
-	do {
-		printf("%d\n", tmp->value);
-		tmp = tmp->next;
-	} while (tmp != head->next);
+int isEmpty(Queue *q) {
+	return q->head == NULL && q->tail == NULL;
 }
 
-Node* enqueue(Node *head, int n) {
+void enqueue(Queue *q, int n) {
 	Node *new_node;
 	new_node = malloc(sizeof(Node));	
 	new_node->value = n;
-	new_node->next = head->next;
-	head->next = new_node;
-	return new_node;
+	new_node->next = NULL;
+
+	if (q->head == NULL) {
+		q->head = q->tail = new_node;
+		return;
+	} 
+	q->tail->next = new_node;
+	q->tail = new_node;
+	return;	
 }
 
-int dequeue(Node *head) {
-	if (head == NULL) return -1;
-	Node *tmp = head->next;
+int dequeue(Queue *q) {
+	if (q->head == NULL) return -1;
+	Node *tmp = q->head;
 	int v = tmp->value;
-	head->next = tmp->next;
+	
+	q->head = q->head->next;
+
+	if (q->head == NULL) {
+		q->tail = NULL;
+	}
+
 	free(tmp);
 	return v;
 }
 
-// int main() {
-// 	Node *queue = Queue(7); // [7 | ] -> [7 | ]
-// 	queue = enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
-// 	queue = enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
-// 	queue =	enqueue(queue, 19); 
-// 	queue = enqueue(queue, 1);
+int main() {
+	Queue *queue = InitQueue();
+	enqueue(queue, 7); // [| ] -> [7 | ]
+	enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
+	enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
+	enqueue(queue, 19); 
+	enqueue(queue, 1);
 
-//   print(queue);
-// 	printf("====\n");
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-// 	printf("f %d\n", dequeue(queue));
-	
-// 	return 0;
-// }
+	printf("====\n");
+	printf("f %d\n", dequeue(queue));
+	printf("f %d\n", dequeue(queue));
+	printf("f %d\n", dequeue(queue));
+	printf("f %d\n", dequeue(queue));
+	printf("f %d\n", dequeue(queue));
+	return 0;
+}
