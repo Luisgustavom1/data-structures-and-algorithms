@@ -48,22 +48,22 @@ Node* append(Node *head, int n) {
 	return new_node;
 }
 
-int main() {
-	Node *linkedList = LinkedList(7);
-	append(linkedList, 19);
-	append(linkedList, 18);
-	append(linkedList, 17);
-	append(linkedList, 16);
-	append(linkedList, 15);
+// int main() {
+// 	Node *linkedList = LinkedList(7);
+// 	append(linkedList, 19);
+// 	append(linkedList, 18);
+// 	append(linkedList, 17);
+// 	append(linkedList, 16);
+// 	append(linkedList, 15);
 	
-	print(linkedList);
-	removeByValue(linkedList, 17);
-	Node *t = search(linkedList, 17);
-	if (t == NULL) {
-		printf("not found\n");
-	} else {
-		printf("found %d\n", t->value);
-	}
+// 	print(linkedList);
+// 	removeByValue(linkedList, 17);
+// 	Node *t = search(linkedList, 17);
+// 	if (t == NULL) {
+// 		printf("not found\n");
+// 	} else {
+// 		printf("found %d\n", t->value);
+// 	}
 	
-	return 0;
-}
+// 	return 0;
+// }
