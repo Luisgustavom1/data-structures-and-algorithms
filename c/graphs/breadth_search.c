@@ -1,25 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "graph.h"
 #include "../linked-list/queue.h"
-
-#define vertex int
-
-typedef struct adj {
-	int V;
-	int A;
-	Node** adj;	
-} Graph;
-
-Graph *GraphInit(int V) {
-	Graph* G = malloc(sizeof(Graph));
-	G->V = V;
-	G->A = 0;
-	G->adj = malloc(sizeof (Node*) * V);
-	for (vertex i = 0; i < V; i++) {
-		G->adj[i] = NULL;
-	}
-	return G;
-}
 
 int *breadthSearch(Graph *g) {
 	int *visited = malloc(sizeof(int) * g->V);
