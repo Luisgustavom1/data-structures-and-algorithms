@@ -36,15 +36,12 @@ int search(BinaryTree* root, int v) {
 }
 
 int insert(BinaryTree* root, int v) {
+  if (root == NULL) return 0;
   BinaryTree new = (BinaryTree)malloc(sizeof(BinaryTree));
   if (new == NULL) return 0;
   new->value = v;
   new->left = NULL;
   new->right = NULL;
-
-  if (root == NULL) {
-    *root = new;
-  }
 
   BinaryTree curr = *root;
   BinaryTree prev = NULL;
@@ -63,6 +60,55 @@ int insert(BinaryTree* root, int v) {
   else prev->right = new;
 
   return 1;
+}
+
+
+struct Node* removeNode(BinaryTree root) {
+  struct Node* curr, *prev;
+  if (root->left == NULL) {
+    curr = root->right;
+    freeNode(root);
+    return curr;
+  }
+
+  prev = curr;
+  curr = root->left;
+  while(curr->right != NULL) {
+    prev = curr;
+    curr = curr->right;
+  }
+
+  if (prev != root) {
+    prev->right = curr->left;
+    curr->left = root->left;
+  }
+  curr->right = root->right;
+  freeNode(root);
+
+  return curr;
+}
+
+int removeElement(BinaryTree* root, int v) {
+  if (root == NULL) return 0;
+
+  BinaryTree curr = *root;
+  BinaryTree prev = NULL;
+
+  while(curr != NULL) {
+    if (curr->value == v) {
+      if (*root == curr) *root = removeNode(curr);
+      else if (prev->left == curr) prev->left = removeNode(curr);
+      else prev->right = removeNode(curr);
+
+      return 1;
+    }
+    prev = curr;
+
+    if (v < curr->value) curr = curr->left;
+    else curr = curr->right;
+  }
+
+  return 0;
 }
 
 int main() {
