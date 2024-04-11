@@ -42,8 +42,26 @@ int insert(BinaryTree* root, int v) {
   new->left = NULL;
   new->right = NULL;
 
+  if (root == NULL) {
+    *root = new;
+  }
+
   BinaryTree curr = *root;
   BinaryTree prev = NULL;
+
+  while (curr != NULL) {
+    prev = curr;
+    if (v == curr->value) {
+      freeNode(new);
+      return 0;
+    }
+    if (v < curr->value) curr = curr->left;
+    else curr = curr->right;
+  }
+
+  if (v < prev->value) prev->left = new;
+  else prev->right = new;
+
   return 1;
 }
 
