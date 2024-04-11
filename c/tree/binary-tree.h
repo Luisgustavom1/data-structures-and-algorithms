@@ -1,12 +1,13 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 
-typedef struct Node* BinaryTree;
+typedef struct _Node* BinaryTree;
+typedef struct _Node Node;
 
-struct Node {
+struct _Node {
 	int value;
-	struct Node* left;
-	struct Node* right;
+	struct _Node* left;
+	struct _Node* right;
 };
 
 BinaryTree* createTree();

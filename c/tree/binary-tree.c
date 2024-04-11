@@ -63,8 +63,8 @@ int insert(BinaryTree* root, int v) {
 }
 
 
-struct Node* removeNode(BinaryTree root) {
-  struct Node* curr, *prev;
+Node* removeNode(BinaryTree root) {
+  Node* curr, *prev;
   if (root->left == NULL) {
     curr = root->right;
     freeNode(root);
