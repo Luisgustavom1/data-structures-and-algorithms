@@ -16,10 +16,8 @@ void freeTree(Avl* root) {
 
 void freeNode(Avl root) {
   if (root == NULL) return;
-  //FIXME: freeNode(root->left);
-  // freeNode(root->left);
-  //FIXME: freeNode(root->left);
-  // freeNode(root->right);
+  freeNode(root->left);
+  freeNode(root->right);
   free(root);
   root = NULL;
 }
@@ -89,32 +87,6 @@ int insert(Avl* root, int v) {
   curr->height = higher(nodeHeight(curr->left), nodeHeight(curr->right)) + 1;
 
   return res;
-}
-
-// TODO: verify if can remove
-Node* removeNode(Node* root) {
-  Node* curr, *prev;
-  if (root->left == NULL) {
-    curr = root->right;
-    freeNode(root);
-    return curr;
-  }
-
-  prev = root;
-  curr = root->left;
-  while(curr->right != NULL) {
-    prev = curr;
-    curr = curr->right;
-  }
-
-  if (prev != root) {
-    prev->right = curr->left;
-    curr->left = root->left;
-  }
-  curr->right = root->right;
-  freeNode(root);
-
-  return curr;
 }
 
 int removeElement(Avl* root, int v) {
