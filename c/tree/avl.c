@@ -183,7 +183,7 @@ void llRotation(Avl* root) {
   (*root)->height = higher(nodeHeight((*root)->left), nodeHeight((*root)->right)) + 1;
   // Como mudou os filhos do nó esquerdo do root a gente atualiza a altura desse nó
   // TODO: verify if root->height can be aux->right
-  aux->height = higher(nodeHeight(aux->left), (*root)->height) + 1;
+  aux->height = higher(nodeHeight(aux->left), nodeHeight(aux->right)) + 1;
 
   // O root passa a ser o nó da esquerda
   (*root) = aux;
@@ -200,7 +200,7 @@ void rrRotation(Avl* root) {
   (*root)->height = higher(nodeHeight((*root)->left), nodeHeight((*root)->right)) + 1;
   // Como mudou os filhos do nó direito do root a gente atualiza a altura desse nó
   // TODO: verify if root->height can be aux->left
-  aux->height = higher(nodeHeight(aux->right), (*root)->height) + 1;
+  aux->height = higher(nodeHeight(aux->right), nodeHeight(aux->left)) + 1;
 
   // O root passa a ser o nó da direita
   (*root) = aux;
