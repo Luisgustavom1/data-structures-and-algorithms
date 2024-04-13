@@ -59,15 +59,16 @@ int insert(Avl* root, int v) {
 
   // Para respeitar a regra da árvore binária
   if (v < curr->value) {
-    // Insere no nó da esquerda
+    // Insere no nó da ESQUERDA
     res = insert(&curr->left, v);
     if (res == 1) {
       int shouldRotate = balancingFactor(curr) >= 2;
       if (shouldRotate) {
-        // Se o valor entrou no nó (esquerda do root) da esquerda, então a rotação é LL (Linked List)
-        if (v < (*root)->left->value) llRotation(root);
-        // Se o valor entrou no nó (esquerda do root) da direita, então a rotação é LR (zig zag)
-        else lrRotation(root);
+        // analisar a subárvore em que foi inserido o valor
+        Node* nodeToAnalyze = (*root)->left;
+        // Se o valor entrou no nó da ESQUERDA, então a rotação é LL
+        if (v < nodeToAnalyze->value) llRotation(root); // (Linked List)
+        else lrRotation(root); // (zig zag)
       }
     }
   } else {
@@ -76,10 +77,11 @@ int insert(Avl* root, int v) {
     if (res == 1) {
       int shouldRotate = balancingFactor(curr) >= 2;
       if(shouldRotate) {
-        // Se o valor entrou no nó (direita do root) da direita, então a rotação é LL (Linked List)
-        if (v > (*root)->right->value) rrRotation(root);
-        // Se o valor entrou no nó (direita do root) da esquerda, então a rotação é LR (zig zag)
-        else rlRotation(root);
+        // analisar a subárvore em que foi inserido o valor
+        Node* nodeToAnalyze = (*root)->right;
+        // Se o valor entrou no nó da DIREITA, então a rotação é LL
+        if (v > nodeToAnalyze->value) rrRotation(root); // (Linked List)
+        else rlRotation(root); // (zig zag)
       }
     }
   }
@@ -89,6 +91,7 @@ int insert(Avl* root, int v) {
   return res;
 }
 
+// TODO: verify if can remove
 Node* removeNode(Node* root) {
   Node* curr, *prev;
   if (root->left == NULL) {
@@ -115,26 +118,70 @@ Node* removeNode(Node* root) {
 }
 
 int removeElement(Avl* root, int v) {
+  // Caso a arvores esteja vazia
   if (root == NULL) return 0;
 
-  Avl curr = *root;
-  Avl prev = NULL;
-
-  while(curr != NULL) {
-    if (curr->value == v) {
-      if (*root == curr) *root = removeNode(curr);
-      else if (prev->left == curr) prev->left = removeNode(curr);
-      else prev->right = removeNode(curr);
-
-      return 1;
+  int res;
+  // Se o valor é menor que o valor root então tenta remove o valor da ESQUERDA
+  if (v < (*root)->value) {
+    res = removeElement(&(*root)->left, v);
+    if (res == 1) {
+      int shouldRotate = balancingFactor(*root) >= 2;
+      if (shouldRotate) {
+        // Analisar a subárvore oposta a que foi inserido o valor
+        Node* nodeToAnalyze = (*root)->right;
+        // Analisa se depois de remover o nó da ESQUERDA é necessário rebalancear subárvore da DIREITA
+        // Se a altura do nó da ESQUERDA for menor que a altura do nó da DIREITA, então a rotação é RR
+        if (nodeHeight(nodeToAnalyze->left) <= nodeHeight(nodeToAnalyze->right)) rrRotation(root); // (linked list)
+        else rlRotation(root); // (zig-zag)
+      }
     }
-
-    prev = curr;
-    if (v < curr->value) curr = curr->left;
-    else curr = curr->right;
+  // Se o valor for maior que o valor root então tenta remover o valor da DIREITA
+  } else if (v > (*root)->value) {
+    res = removeElement(&(*root)->right, v);
+    if (res == 1) {
+      int shouldRotate = balancingFactor(*root) >= 2;
+      // Analisar a subárvore oposta a que foi inserido o valor
+      Node* nodeToAnalyze = (*root)->left;
+      // Analisa se depois de remover o nó da DIREITA é necessário rebalancear subárvore da ESQUERDA
+      // Se a altura do nó da DIREITA for menor que a altura do nó da ESQUERDA, então a rotação é LL
+      if (nodeHeight(nodeToAnalyze->left) >= nodeHeight(nodeToAnalyze->right)) llRotation(root); // (linked list)
+      else lrRotation(root); // (zig-zag)
+    }
+  } else {
+    // Tem 1 ou nenhum filho
+    if ((*root)->left == NULL || (*root)->right == NULL) {
+      Node* aux = *root;
+      if ((*root)->left != NULL) *root = (*root)->left;
+      else *root = (*root)->right;
+      freeNode(aux);
+    // Tem 2 filhos
+    } else {
+      // procura o menor valor da subarvore da direita
+      Node* temp = findSmaller((*root)->right);
+      // copiar o valor pra cima
+      (*root)->value = temp->value;
+      // remover a sujeira do nó da direita que sobrou
+      removeElement(&(*root)->right, (*root)->value);
+      if (balancingFactor(*root) >= 2) {
+        // Analise o oposto da subárvore que foi removido o valor
+        Node* nodeToAnalyze = (*root)->left;
+        // Se a altura do nó da DIREITA for menor que a altura do nó da ESQUERDA, então a rotação é LL
+        if (nodeHeight(nodeToAnalyze->left) >= nodeHeight(nodeToAnalyze->right)) llRotation(root); // (linked list)
+        else lrRotation(root); // (zig-zag)
+      }
+    }
   }
 
   return 0;
+}
+
+Node* findSmaller(Node* root) {
+  Node* curr = root;
+  while (curr->left != NULL) {
+    curr = curr->left;
+  }
+  return curr;
 }
 
 int nodeHeight(Node* node) {
@@ -204,12 +251,14 @@ void rlRotation(Avl* root) {
 int main() {
   Avl* tree = createTree();
   insert(tree, 10);
-  insert(tree, 9);
   insert(tree, 8);
+  insert(tree, 9);
+  insert(tree, 7);
 
   printf("root %d\n", (*tree)->value);
-  printf("root l %d\n", (*tree)->left->value);
   printf("root r %d\n", (*tree)->right->value);
+  printf("root l %d\n", (*tree)->left->value);
+  printf("root l l %d\n", (*tree)->left->left->value);
 
   int searchValue = 8;
   if (search(tree, searchValue)) {

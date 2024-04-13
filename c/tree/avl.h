@@ -12,17 +12,22 @@ struct _Node {
 };
 
 Avl* createTree();
-void freeTree(Avl* root);
-void freeNode(Avl node);
+
 int search(Avl* root, int value);
 int insert(Avl* root, int value);
 int removeElement(Avl* root, int value);
+
 void llRotation(Avl* root);
 void rrRotation(Avl* root);
 void lrRotation(Avl* root);
 void rlRotation(Avl* root);
+
+// utils
 int balancingFactor(Node* root);
 int nodeHeight(Node* root);
 int higher(int a, int b);
+void freeTree(Avl* root);
+void freeNode(Node* node);
+Node* findSmaller(Node* root);
 
 #endif
