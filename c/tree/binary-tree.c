@@ -120,29 +120,27 @@ int main() {
         return 1;
     }
 
-    insert(tree, 5);
-    insert(tree, 3);
-    insert(tree, 7);
-    insert(tree, 2);
-    insert(tree, 4);
-    insert(tree, 6);
+    insert(tree, 25);
+    insert(tree, 71);
+    insert(tree, 81);
+    insert(tree, 12);
+    insert(tree, 20);
+    insert(tree, 17);
     insert(tree, 8);
 
-    int searchValue = 4;
-    if (search(tree, searchValue)) {
-        printf("%d encontrado na árvore.\n", searchValue);
-    }
-
-    int removeValue = 7;
+    int removeValue = 25;
     if (removeElement(tree, removeValue)) {
         printf("%d removido da árvore.\n", removeValue);
     } 
 
-    if (!search(tree, removeValue)) {
-        printf("%d não existe.\n", removeValue);
+    removeValue = 71;
+    if (removeElement(tree, removeValue)) {
+        printf("%d removido da árvore.\n", removeValue);
     }
 
-    freeTree(tree);
+    if ((*tree)->right == NULL) printf("subarvore direita vazia\n");
+    if ((*tree)->left == NULL) printf("subarvore esquerda vazia\n");
 
+    freeTree(tree);
     return 0;
 }
