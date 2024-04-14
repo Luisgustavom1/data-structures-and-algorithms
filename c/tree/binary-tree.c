@@ -120,20 +120,25 @@ int main() {
         return 1;
     }
 
-    insert(tree, 25);
-    insert(tree, 71);
-    insert(tree, 81);
-    insert(tree, 12);
+    insert(tree, 50);
+    insert(tree, 30);
     insert(tree, 20);
-    insert(tree, 17);
-    insert(tree, 8);
+    insert(tree, 15);
+    insert(tree, 25);
+    insert(tree, 40);
+    insert(tree, 35);
+    insert(tree, 45);
+    insert(tree, 36);
+    insert(tree, 70);
+    insert(tree, 60);
+    insert(tree, 80);
 
-    int removeValue = 25;
+    int removeValue = 30;
     if (removeElement(tree, removeValue)) {
         printf("%d removido da árvore.\n", removeValue);
     } 
 
-    removeValue = 71;
+    removeValue = 40;
     if (removeElement(tree, removeValue)) {
         printf("%d removido da árvore.\n", removeValue);
     }
