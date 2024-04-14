@@ -4,9 +4,6 @@
 
 BinaryTree* createTree() {
   BinaryTree* root = (BinaryTree*)malloc(sizeof(BinaryTree));
-  if (root != NULL) {
-    root = NULL;
-  }  
   return root;
 }
 
@@ -14,9 +11,10 @@ void freeTree(BinaryTree* root) {
   if (root == NULL) return;
   freeNode(*root);
   free(root);
+  root = NULL;
 }
 
-void freeNode(BinaryTree root) {
+void freeNode(Node* root) {
   if (root == NULL) return;
   freeNode(root->left);
   freeNode(root->right);
@@ -37,11 +35,16 @@ int search(BinaryTree* root, int v) {
 
 int insert(BinaryTree* root, int v) {
   if (root == NULL) return 0;
-  BinaryTree new = (BinaryTree)malloc(sizeof(BinaryTree));
+  Node* new = (Node*)malloc(sizeof(Node));
   if (new == NULL) return 0;
   new->value = v;
   new->left = NULL;
   new->right = NULL;
+
+  if (*root == NULL) {
+    *root = new;
+    return 1;
+  }
 
   BinaryTree curr = *root;
   BinaryTree prev = NULL;
@@ -62,16 +65,15 @@ int insert(BinaryTree* root, int v) {
   return 1;
 }
 
-
-Node* removeNode(BinaryTree root) {
-  Node* curr, *prev;
+Node* removeNode(Node* root) {
+  Node *curr, *prev;
   if (root->left == NULL) {
     curr = root->right;
-    freeNode(root);
+    free(root);
     return curr;
   }
 
-  prev = curr;
+  prev = root;
   curr = root->left;
   while(curr->right != NULL) {
     prev = curr;
@@ -83,8 +85,8 @@ Node* removeNode(BinaryTree root) {
     curr->left = root->left;
   }
   curr->right = root->right;
-  freeNode(root);
 
+  free(root);
   return curr;
 }
 
@@ -102,8 +104,8 @@ int removeElement(BinaryTree* root, int v) {
 
       return 1;
     }
-    prev = curr;
 
+    prev = curr;
     if (v < curr->value) curr = curr->left;
     else curr = curr->right;
   }
@@ -112,5 +114,35 @@ int removeElement(BinaryTree* root, int v) {
 }
 
 int main() {
-  return 0;
+    BinaryTree* tree = createTree();
+    if (tree == NULL) {
+        printf("[ERROR] error on create tree\n");
+        return 1;
+    }
+
+    insert(tree, 5);
+    insert(tree, 3);
+    insert(tree, 7);
+    insert(tree, 2);
+    insert(tree, 4);
+    insert(tree, 6);
+    insert(tree, 8);
+
+    int searchValue = 4;
+    if (search(tree, searchValue)) {
+        printf("%d encontrado na árvore.\n", searchValue);
+    }
+
+    int removeValue = 7;
+    if (removeElement(tree, removeValue)) {
+        printf("%d removido da árvore.\n", removeValue);
+    } 
+
+    if (!search(tree, removeValue)) {
+        printf("%d não existe.\n", removeValue);
+    }
+
+    freeTree(tree);
+
+    return 0;
 }
