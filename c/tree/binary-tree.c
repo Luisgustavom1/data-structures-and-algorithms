@@ -113,6 +113,27 @@ int removeElement(BinaryTree* root, int v) {
   return 0;
 }
 
+void perOrder(BinaryTree root) {
+  if (root == NULL) return;
+  printf("%d\n", root->value);
+  perOrder(root->left);
+  perOrder(root->right);
+}
+
+void inOrder(BinaryTree root) {
+  if (root == NULL) return;
+  perOrder(root->left);
+  printf("%d\n", root->value);
+  perOrder(root->right);
+}
+
+void posOrder(BinaryTree root) {
+  if (root == NULL) return;
+  perOrder(root->left);
+  perOrder(root->right);
+  printf("%d\n", root->value);
+}
+
 int main() {
     BinaryTree* tree = createTree();
     if (tree == NULL) {
@@ -145,6 +166,8 @@ int main() {
 
     if ((*tree)->right == NULL) printf("subarvore direita vazia\n");
     if ((*tree)->left == NULL) printf("subarvore esquerda vazia\n");
+
+    perOrder(*tree);
 
     freeTree(tree);
     return 0;

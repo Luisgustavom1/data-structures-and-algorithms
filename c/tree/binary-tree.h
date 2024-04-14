@@ -16,5 +16,8 @@ void freeNode(BinaryTree node);
 int search(BinaryTree* root, int value);
 int insert(BinaryTree* root, int value);
 int removeElement(BinaryTree* root, int value);
+void perOrder(BinaryTree root);
+void inOrder(BinaryTree root);
+void posOrder(BinaryTree root);
 
 #endif
