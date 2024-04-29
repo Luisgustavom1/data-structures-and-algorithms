@@ -1,9 +1,12 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "@tsconfig/node21/tsconfig.json",
   "compilerOptions": {
     "outDir": "./out",
     "strict": true,
     "types": ["vitest/globals"],
+
+    "module": "ESNext",
+    "moduleResolution": "node"
   },
   "include": ["**.ts"],
   "exclude": ["node_modules"]

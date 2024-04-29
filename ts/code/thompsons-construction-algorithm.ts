@@ -22,22 +22,28 @@ function thompsonConstruction(regex: string) {
     switch (true) {
       case isRuleTwo(ch):
         stack.push(ch);
+        break
       case isRuleThree(ch):
         const nfa1 = stack.pop();
         const nfa2 = stack.pop();
         const unifiedNfa = `${nfa2}${ch}${nfa1}`;
         stack.push(unifiedNfa);
+        break
       case isRuleFour(ch):
         const nfa3 = stack.pop();
         const nfa4 = stack.pop();
         const concatenatedNfa = `${nfa4}${nfa3}`;
         stack.push(concatenatedNfa);
+        break
       case isRuleFive(ch):
         const nfa = stack.pop();
         const nfaClosured = `${nfa}${ch}`;
         stack.push(nfaClosured);
+        break
     }
   }
+
+  return stack
 }
 
 console.log(thompsonConstruction("aab+*?b?"));
