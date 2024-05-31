@@ -22,8 +22,14 @@ void enqueue(Queue *q, int n) {
 		q->head = q->tail = new_node;
 		return;
 	} 
+
+	// Queue: head -> [value: 1, next: ->] -> [value: 2, next: NULL]
+	// 	tail -> [value: 2, next: NULL]
 	q->tail->next = new_node;
 	q->tail = new_node;
+	// Queue: head -> [value: 1, next: ->] -> [value: 2, next: ->] -> [value: 3, next: NULL]
+	//        tail -> [value: 3, next: NULL]
+
 	return;	
 }
 
@@ -44,9 +50,9 @@ int dequeue(Queue *q) {
 
 // int main() {
 // 	Queue *queue = InitQueue();
-// 	enqueue(queue, 7); // [| ] -> [7 | ]
-// 	enqueue(queue, 3); // [3 | ] -> [7 | ] -> [3 | ]
-// 	enqueue(queue, 8); // [8 | ] -> [7 | ] -> [3 | ] -> [8 | ]
+// 	enqueue(queue, 7); // head -> [7 | ] / tail -> [7| ]
+// 	enqueue(queue, 3); // head -> [7| ] -> [8| ] / tail -> [8| ]
+// 	enqueue(queue, 8); // head -> [7| ] -> [8| ] -> [9| ] / tail -> [9| ]
 // 	enqueue(queue, 19); 
 // 	enqueue(queue, 1);
 
