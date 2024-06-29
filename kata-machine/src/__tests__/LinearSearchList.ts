@@ -10,5 +10,3 @@ test("linear search array", function() {
     expect(linear_fn(foo, 1)).toEqual(true);
     expect(linear_fn(foo, 0)).toEqual(false);
 });
-
-
