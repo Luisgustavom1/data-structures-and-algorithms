@@ -9,6 +9,7 @@ export default class SinglyLinkedList<T> implements List<T> {
     }
 
     prepend(item: T): void {
+        this.length++;
         if (this.isEmpty()) {
             this.head = {
                 value: item,
@@ -29,10 +30,10 @@ export default class SinglyLinkedList<T> implements List<T> {
             this.head!.prev = newNode;
             this.head = newNode;
         }
-        this.length++;
     }
 
     append(item: T): void {
+        this.length++;
         if (this.isEmpty()) {
             this.head = {
                 value: item,
@@ -50,7 +51,6 @@ export default class SinglyLinkedList<T> implements List<T> {
             }
             this.tail = this.tail!.next;
         }
-        this.length++;
     }
     
     insertAt(item: T, idx: number): void {
@@ -91,6 +91,7 @@ export default class SinglyLinkedList<T> implements List<T> {
         }
         
         if (!nodeToRemove) return undefined;
+        this.length--;
 
         if (nodeToRemove.prev) {
             nodeToRemove.prev.next = nodeToRemove.next;
@@ -104,7 +105,6 @@ export default class SinglyLinkedList<T> implements List<T> {
             this.head = nodeToRemove.next;
         }
 
-        this.length--;
         return nodeToRemove.value; 
     }    
 
@@ -119,6 +119,7 @@ export default class SinglyLinkedList<T> implements List<T> {
         }
 
         if (!nodeToRemove) return undefined;
+        this.length--;
 
         if (nodeToRemove.next) {
             nodeToRemove.next.prev = nodeToRemove.prev;
@@ -127,8 +128,6 @@ export default class SinglyLinkedList<T> implements List<T> {
         if (nodeToRemove.prev) {
             nodeToRemove.prev.next = nodeToRemove.next;
         } 
-
-        this.length--;
 
         if (this.length === 1) {
             this.head = nodeToRemove.next;
