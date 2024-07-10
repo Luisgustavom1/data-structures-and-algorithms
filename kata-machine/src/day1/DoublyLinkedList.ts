@@ -46,10 +46,9 @@ export default class DoublyLinkedList<T> {
 				prev: curr.prev,
 				next: curr, 
 			};
+			
+			if (curr.prev) curr.prev.next = newNode;	
 			curr.prev = newNode;
-
-			// ?????????
-			if (newNode.prev) newNode.prev.next = curr;	
     }
 
     append(item: T): void {
