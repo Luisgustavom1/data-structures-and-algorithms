@@ -9,7 +9,7 @@
         "--inspect-brk",
         "${workspaceRoot}/node_modules/.bin/jest",
         "--runInBand",
-        "BTPre"
+        "MinHeap"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
