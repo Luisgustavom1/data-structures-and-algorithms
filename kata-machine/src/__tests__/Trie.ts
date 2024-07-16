@@ -1,4 +1,4 @@
-import Trie from "@code/Trie";
+import { Trie } from "@code/Trie";
 
 test("Trie", function() {
     const trie = new Trie();
