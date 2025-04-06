@@ -100,10 +100,10 @@ class Maze:
 
 
 def searchFrom(m, r, c):
-  m.updatePosition(r, c)
-
   if m[r][c] == VISITED or m[r][c] == DEAD_END or m[r][c] == WALL:
     return False
+  
+  m.updatePosition(r, c)
 
   if m.isExit(r, c):
     m.updatePosition(r, c, PART_OF_PATH)
@@ -123,7 +123,7 @@ def searchFrom(m, r, c):
 
   return found
 
-myMaze = Maze("py/maze.txt")
+myMaze = Maze("maze.txt")
 myMaze.drawMaze()
 myMaze.updatePosition(myMaze.startRow,myMaze.startCol)
 
