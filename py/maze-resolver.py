@@ -61,8 +61,8 @@ class Maze:
 
   def moveTurtle(self, r, c):
     self.t.up()
-    self.t.setheading(self.t.towards(r+self.xTranslate,-c+self.yTranslate))
-    self.t.goto(r+self.xTranslate,-c+self.yTranslate)
+    self.t.setheading(self.t.towards(c+self.xTranslate,-r+self.yTranslate))
+    self.t.goto(c+self.xTranslate,-r+self.yTranslate)
 
   def dropBreadcrumb(self,color):
     self.t.dot(10,color)
@@ -102,10 +102,7 @@ class Maze:
 def searchFrom(m, r, c):
   m.updatePosition(r, c)
 
-  if m[r][c] == WALL:
-    return False
-
-  if m[r][c] == VISITED or m[r][c] == DEAD_END:
+  if m[r][c] == VISITED or m[r][c] == DEAD_END or m[r][c] == WALL:
     return False
 
   if m.isExit(r, c):
@@ -114,10 +111,10 @@ def searchFrom(m, r, c):
 
   m.updatePosition(r, c, VISITED)
 
-  found = searchFrom(m, r+1, c) or \
-    searchFrom(m, r-1, c) or \
-    searchFrom(m, r, c+1) or \
-    searchFrom(m, r, c-1)
+  found = searchFrom(m, r-1, c) or \
+    searchFrom(m, r+1, c) or \
+    searchFrom(m, r, c-1) or \
+    searchFrom(m, r, c+1)
 
   if found:
     m.updatePosition(r, c, PART_OF_PATH)
