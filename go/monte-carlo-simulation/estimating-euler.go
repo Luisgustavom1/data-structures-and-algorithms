@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	const iterations = 1_000_000
 	fmt.Printf("Estimating euler with %d iterations.\n\n", iterations)

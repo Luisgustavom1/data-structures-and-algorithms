@@ -8,14 +8,14 @@ import (
 )
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	const points = 1_000_000
 	fmt.Printf("Estimating pi with %d point(s).\n\n", points)
 
 	var pointsInsideTheCircle int
 	for i := 0; i < points; i++ {
-		x, y := randomPoint()
+		x, y := randomPoint(rand)
 
 		// x^2 + y^2 = 1 -> circle on the cartesian coordinate system
 		if x*x+y*y < 1 {
@@ -35,7 +35,7 @@ func main() {
 	fmt.Printf("Error: %9f%%\n", errorPct)
 }
 
-func randomPoint() (x, y float64) {
+func randomPoint(rand *rand.Rand) (x, y float64) {
 	x = 2.0*rand.Float64() - 1.0
 	y = 2.0*rand.Float64() - 1.0
 	return x, y

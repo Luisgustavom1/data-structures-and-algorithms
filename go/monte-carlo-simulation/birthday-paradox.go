@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	var (
 		people     int
