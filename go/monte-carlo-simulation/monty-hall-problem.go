@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 	"time"
 )
@@ -33,7 +34,8 @@ func main() {
 
 	prob := float64(success) / float64(iterations)
 	expected := 2.0 / 3.0
-	errorPct := 100.0 * (prob / expected)
+	errorPct := 100.0 * math.Abs(expected-prob) / prob
 	fmt.Printf("Success: %9f%%\n", prob*100)
+	fmt.Printf("Expected: %9f%%\n", expected*100)
 	fmt.Printf("Failure: %9f%%\n", errorPct)
 }
