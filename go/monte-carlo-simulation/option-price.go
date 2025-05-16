@@ -13,7 +13,7 @@ func main() {
 	// params
 	const (
 		S0        = 100.0
-		K         = 100.0
+		K         = 105.0
 		T         = 1.0
 		r         = 0.05
 		sigma     = 0.2
